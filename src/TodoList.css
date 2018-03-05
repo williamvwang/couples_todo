@@ -24,26 +24,6 @@ button.button.icon-button:hover {
   cursor: pointer;
 }
 
-/*button.button.icon-button.ibb {
-  color: white;
-  background-color: #bef2b8;
-}
-
-button.button.icon-button.ibb:hover {
-  color: #bef2b8;
-  background-color: #efefef;
-}*/
-
-button.button.icon-button.obb {
-  color: white;
-  background-color: #e58b9f;
-}
-
-button.button.icon-button.obb:hover {
-  color: #e58b9f;
-  background-color: #efefef;
-}
-
 .todo-list-main .todo-list {
   list-style: none;
   padding-left: 0;
@@ -58,13 +38,18 @@ button.button.icon-button.obb:hover {
   margin: 2px 0;
 }
 
+.todo-list-main .todo-list .divider {
+  width: 5px;
+  background-color: #a0ef97;
+}
+
 .todo-list-main .todo-list li {
   display: table-cell;
   width: inherit;
   height: inherit;
   color: #333;
-  background-color: rgba(255,255,255,.5);
-  padding: 10px 10px 10px 15px;
+  background-color: rgba(255,255,255,.7);
+  padding: 8px 10px 10px 10px;
 }
 
 button.button.icon-button.check {
@@ -72,5 +57,5 @@ button.button.icon-button.check {
 }
 
 button.button.icon-button.check:hover {
-  color: #23d160;
+  color: #66bc5c;
 }

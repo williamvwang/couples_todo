@@ -5,11 +5,16 @@ html {
 body {
 	height: 100%;
 	background-color: #66CCFF;
-	font-family: sans-serif;
+	font-family: 'Lato', sans-serif;
 	padding: 50px;
 }
 
 #container {
   display: flex;
   justify-content: center;
+}
+
+.title {
+	color: white;
+	text-align: center;
 }

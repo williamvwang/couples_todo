@@ -13,6 +13,15 @@ class TodoItems extends Component {
   }
 
   createTasks(item) {
+    var person = "white";
+    if (item.ibb && item.obb) {
+      person = "#87efff";
+    } else if (item.ibb) {
+      person = "#a0ef97";
+    } else if (item.obb) {
+      person = "#e58b9f";
+    }
+
 	  return (
       <div className="todo-list-item" key={item.key}>
         <button className="button icon-button check" onClick={() => this.delete(item.key)} >
@@ -20,6 +29,8 @@ class TodoItems extends Component {
             <i className="fa fa-check"></i>
           </span>
         </button>
+        <div className="divider" style={{backgroundColor: person}}>
+        </div>
   	  	<li>
           {item.text}
   	    </li>
