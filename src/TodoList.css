@@ -27,7 +27,7 @@
 
 .todo-list-main .todo-list .todo-list-item {
   display: inline-flex;
-  width: inherit;
+  width: 352px;
   height: 40px;
   padding: 0;
   margin: 2px 0;
@@ -44,14 +44,18 @@
 
 button.button.check-button {
   height: inherit;
-  width: 50px;
+  width: 45px;
+  color: #dbdbdb;
   border-radius: 0;
   border: none;
   padding: none;
-  transition: background-color .2s ease-out;
+  transition: color .3s ease-out;
+}
+
+i.fa.fa-check {
 }
  
 button.button.check-button:hover {
-  background-color: pink;
   cursor: pointer;
+  color: #23d160;
 }
