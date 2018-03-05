@@ -1,0 +1,57 @@
+.todo-list-main .header input {
+  font-size: 16px;
+  width: 300px;
+  margin-bottom: 10px;
+  border-radius: 0px;
+  border: none;
+}
+
+.todo-list-main .header button {
+  font-size: 16px;
+  background-color: #0066FF;
+  color: #FFF;
+  border: none;
+  border-radius: 0;
+}
+
+.todo-list-main .header button:hover {
+  background-color: #003399;
+  cursor: pointer;
+}
+
+.todo-list-main .todo-list {
+  list-style: none;
+  padding-left: 0;
+  width: 352px;
+} 
+
+.todo-list-main .todo-list .todo-list-item {
+  display: inline-flex;
+  width: inherit;
+  height: 40px;
+  padding: 0;
+  margin: 2px 0;
+}
+
+.todo-list-main .todo-list li {
+  display: table-cell;
+  width: inherit;
+  height: inherit;
+  color: #333;
+  background-color: rgba(255,255,255,.5);
+  padding: 10px 10px 10px 15px;
+}
+
+button.button.check-button {
+  height: inherit;
+  width: 50px;
+  border-radius: 0;
+  border: none;
+  padding: none;
+  transition: background-color .2s ease-out;
+}
+ 
+button.button.check-button:hover {
+  background-color: pink;
+  cursor: pointer;
+}
