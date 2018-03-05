@@ -15,7 +15,7 @@ class TodoItems extends Component {
   createTasks(item) {
 	  return (
       <div className="todo-list-item" key={item.key}>
-        <button className="button check-button" onClick={() => this.delete(item.key)} >
+        <button className="button icon-button check" onClick={() => this.delete(item.key)} >
           <span className="icon is-small">
             <i className="fa fa-check"></i>
           </span>

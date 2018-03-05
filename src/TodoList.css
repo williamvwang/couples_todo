@@ -1,22 +1,47 @@
 .todo-list-main .header input {
   font-size: 16px;
-  width: 300px;
+  height: 40px;
+  width: 350px;
   margin-bottom: 10px;
   border-radius: 0px;
   border: none;
 }
 
-.todo-list-main .header button {
-  font-size: 16px;
-  background-color: #0066FF;
-  color: #FFF;
-  border: none;
-  border-radius: 0;
+.todo-list-main .header input:focus {
+  box-shadow: none;
 }
 
-.todo-list-main .header button:hover {
-  background-color: #003399;
+button.button.icon-button {
+  height: 40px;
+  width: 45px;
+  border-radius: 0;
+  border: none;
+  padding: none;
+  transition: color .3s ease-out;
+}
+
+button.button.icon-button:hover {
   cursor: pointer;
+}
+
+/*button.button.icon-button.ibb {
+  color: white;
+  background-color: #bef2b8;
+}
+
+button.button.icon-button.ibb:hover {
+  color: #bef2b8;
+  background-color: #efefef;
+}*/
+
+button.button.icon-button.obb {
+  color: white;
+  background-color: #e58b9f;
+}
+
+button.button.icon-button.obb:hover {
+  color: #e58b9f;
+  background-color: #efefef;
 }
 
 .todo-list-main .todo-list {
@@ -27,7 +52,7 @@
 
 .todo-list-main .todo-list .todo-list-item {
   display: inline-flex;
-  width: 352px;
+  width: 440px;
   height: 40px;
   padding: 0;
   margin: 2px 0;
@@ -42,20 +67,10 @@
   padding: 10px 10px 10px 15px;
 }
 
-button.button.check-button {
-  height: inherit;
-  width: 45px;
+button.button.icon-button.check {
   color: #dbdbdb;
-  border-radius: 0;
-  border: none;
-  padding: none;
-  transition: color .3s ease-out;
 }
 
-i.fa.fa-check {
-}
- 
-button.button.check-button:hover {
-  cursor: pointer;
+button.button.icon-button.check:hover {
   color: #23d160;
 }
