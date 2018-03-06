@@ -27,10 +27,14 @@ class TodoList extends Component {
 	}
    
   addItem(e) {
-  	if (!this.state.ibbToggle && !this.state.obbToggle) {
-  		console.log("error")
-  	}
-		else if (this._inputElement.value !== "") {
+  	e.preventDefault();
+
+  	if (this._inputElement.value !== "") {
+			if (!this.state.ibbToggle && !this.state.obbToggle) {
+	  		alert('please assign the task to somebody!');
+	  		return;
+	  	}
+
 	    var newItem = {
 	      text: this._inputElement.value,
 	      key: Date.now(),
@@ -40,14 +44,14 @@ class TodoList extends Component {
 	 
 	    this.setState((prevState) => {
 	      return { 
-	        items: prevState.items.concat(newItem) 
+	        items: prevState.items.concat(newItem),
+	      //   ibbToggle: false,
+	    		// obbToggle: false
 	      };
 	    });
 	   
 	    this._inputElement.value = "";
 	  }
-	     
-	  e.preventDefault();
 	}
 
 	deleteItem(key) {
@@ -87,7 +91,6 @@ class TodoList extends Component {
 			          <i className="fa fa-heart"></i>
 			        </span>
 			      </button>  
-
 		        </form>
 	      </div>
 	      <TodoItems entries={this.state.items}
