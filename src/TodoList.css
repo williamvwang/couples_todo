@@ -1,15 +1,71 @@
-.todo-list-main .header input {
+/* ******************** HEADER/INPUT ******************** */
+
+.todo-list-main .header {
+  margin: 10px 0;
+}
+
+.todo-list-main .header .input {
   font-size: 16px;
   height: 40px;
   width: 350px;
-  margin-bottom: 10px;
   border-radius: 0px;
   border: none;
 }
 
-.todo-list-main .header input:focus {
+.todo-list-main .header .input:focus {
   box-shadow: none;
 }
+
+/* ******************** TASKS ******************** */
+
+.todo-list-main .todo-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 440px;
+} 
+
+.todo-list-main .todo-list .todo-list-item {
+  width: 440px;
+  height: 40px;
+  margin: 2px 0;
+}
+
+.task {
+  width: inherit;
+  height: inherit;
+  display: flex;
+  position: relative;
+}
+
+.delete-confirm {
+  width: inherit;
+  height: inherit;
+  display: flex;
+  position: relative;
+}
+
+.divider {
+  width: 5px;
+  float: left;
+}
+
+.todo-list-item li {
+  height: inherit;
+  color: #333;
+  background-color: rgba(255,255,255,.7);
+  padding: 8px 10px 10px 10px;
+}
+
+.todo-list-item .task li {
+  width: 400px;
+}
+
+.todo-list-item .delete-confirm li {
+  width: 345px;
+}
+
+/* ******************** BUTTONS ******************** */
 
 button.button.icon-button {
   height: 40px;
@@ -18,41 +74,11 @@ button.button.icon-button {
   border: none;
   padding: none;
   transition: color .3s ease-out;
+  float: right;
 }
 
 button.button.icon-button:hover {
   cursor: pointer;
-}
-
-.todo-list-main .todo-list {
-  list-style: none;
-  padding-left: 0;
-  width: 352px;
-} 
-
-.todo-list-main .todo-list .todo-list-item {
-  display: inline-flex;
-  width: 440px;
-  height: 40px;
-  padding: 0;
-  margin: 2px 0;
-  transition: all .3s ease-out;
-  z-index: 0;
-}
-
-.divider {
-  width: 5px;
-  background-color: #a0ef97;
-  z-index: 10;
-}
-
-.todo-list-main .todo-list li {
-  display: table-cell;
-  width: 435px;
-  height: inherit;
-  color: #333;
-  background-color: rgba(255,255,255,.7);
-  padding: 8px 10px 10px 10px;
 }
 
 button.button.icon-button.check {
@@ -69,15 +95,4 @@ button.button.icon-button.times {
 
 button.button.icon-button.times:hover {
   color: #a82341;
-}
-
-.modal .modal-content{
-  font-size: 14px;
-  width: 150px;
-  height: 100px;
-}
-
-.modal .modal-content .card .card-content{
-  padding: 15px;
-  text-align: center;
 }

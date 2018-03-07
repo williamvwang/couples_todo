@@ -8,8 +8,6 @@ import 'font-awesome/css/font-awesome.min.css';
 var destination = document.querySelector("#container")
   
 ReactDOM.render(
-    <div>
-        <TodoList/>
-    </div>,
+       <TodoList/>,
     destination
 );

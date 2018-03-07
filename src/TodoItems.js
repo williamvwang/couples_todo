@@ -12,11 +12,8 @@ class TodoItems extends Component {
     };
 
     this.createTasks = this.createTasks.bind(this);
-    this.deleteTodo = this.deleteTodo.bind(this)
     this.toggleDeleteConfirm = this.toggleDeleteConfirm.bind(this);
     this.handleContextMenu = this.handleContextMenu.bind(this);
-
-    this.taskItem = this.taskItem.bind(this);
   }
 
   handleContextMenu(e) {
@@ -36,77 +33,73 @@ class TodoItems extends Component {
     });
   }
 
-  deleteConfirm(item) {
-    var person = "white";
-    if (item.ibb && item.obb) {
-      person = "#87efff";
-    } else if (item.ibb) {
-      person = "#a0ef97";
-    } else if (item.obb) {
-      person = "#e58b9f";
-    }
+  completeTodo(key) {
+    this.props.delete(key);
+  }
 
+  dividerColor(item) {
+    if (item.ibb && item.obb) {
+      return "#87efff";
+    } else if (item.ibb) {
+      return "#a0ef97";
+    } else if (item.obb) {
+      return "#e58b9f";
+    }
+  }
+
+  timesButtonHTML(item) {
     return (
-      <div className="todo-list-item">
-        <div className="divider" style={{backgroundColor: person}}></div>
+      <button className="button icon-button times" onClick={() => this.toggleDeleteConfirm(item.key)}>
+        <span className="icon is-small">
+          <i className="fa fa-times"></i>
+        </span>
+      </button> 
+    );
+  }
+
+  checkButtonHTML(item) {
+    return (
+      <button className="button icon-button check" onClick={() => this.completeTodo(item.key)}>
+        <span className="icon is-small">
+          <i className="fa fa-check"></i>
+        </span>
+      </button>
+    );
+  }
+
+  dividerHTML(item) {
+    return (
+      <div className="divider" style={{ backgroundColor: this.dividerColor(item) }}></div>
+    );
+  }
+
+  deleteConfirm(item) {
+    return (
+      <div className="delete-confirm">
+        { this.dividerHTML(item) }
 
         <li>
           are you sure?
         </li>
 
-        <button className="button icon-button times" onClick={() => this.toggleDeleteConfirm(item.key)} >
-          <span className="icon is-small">
-            <i className="fa fa-times"></i>
-          </span>
-        </button> 
-
-        <button className="button icon-button check" onClick={() => this.completeTodo(item.key)} >
-          <span className="icon is-small">
-            <i className="fa fa-check"></i>
-          </span>
-        </button>
+        { this.timesButtonHTML(item) }
+        { this.checkButtonHTML(item) }
       </div>
       );
   }
 
-  completeTodo(key) {
-    this.props.delete(key);
-  }
-
-  deleteTodo(key) {
-    this.props.delete(key);
-    this.toggleDeleteConfirm();
-  }
-
   taskItem(item) {
-    var person = "white";
-    if (item.ibb && item.obb) {
-      person = "#87efff";
-    } else if (item.ibb) {
-      person = "#a0ef97";
-    } else if (item.obb) {
-      person = "#e58b9f";
-    }
-
     return (
-      <div className="todo-list-item">
-        <div className="divider" style={{backgroundColor: person}}></div>
+      <div className="task">
+        { this.dividerHTML(item) }
 
         <li>
           { item.text }
         </li>
 
         { this.state.icon === "check" ?
-          <button className="button icon-button check" onClick={() => this.completeTodo(item.key)} >
-            <span className="icon is-small">
-              <i className="fa fa-check"></i>
-            </span>
-          </button> :
-          <button className="button icon-button times" onClick={() => this.toggleDeleteConfirm(item.key)} >
-            <span className="icon is-small">
-              <i className="fa fa-times"></i>
-            </span>
-          </button> 
+           this.checkButtonHTML(item)  :
+           this.timesButtonHTML(item) 
         }
       </div>
       );
@@ -115,8 +108,7 @@ class TodoItems extends Component {
   createTasks(item) {
 
 	  return (
-      <div className="todo-list-items" key={item.key} onContextMenu={this.handleContextMenu}>
-
+      <div className="todo-list-item" key={item.key} onContextMenu={this.handleContextMenu}>
         { this.state.showDeleteConfirm && this.state.taskKeyToDelete === item.key ?
           this.deleteConfirm(item) :
           this.taskItem(item)
