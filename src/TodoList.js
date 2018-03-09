@@ -77,24 +77,23 @@ class TodoList extends Component {
 		          </input>
 
 				      <button className="button icon-button add"
-					    	style={{color: obbColor, backgroundColor: "#e58b9f"}}
-					    	onClick={() => this.handleClick("obb")} type="button">
-				        <span className="icon is-small">
-				          <i className="fa fa-heart"></i>
-				        </span>
-				      </button>  
-
-				      <button className="button icon-button add"
 					    	style={{color: ibbColor, backgroundColor: "#a0ef97"}}
 					    	onClick={() => this.handleClick("ibb")} type="button">
 				        <span className="icon is-small">
 				          <i className="fa fa-heart"></i>
 				        </span>
 				      </button>  
+
+				      <button className="button icon-button add"
+					    	style={{color: obbColor, backgroundColor: "#e58b9f"}}
+					    	onClick={() => this.handleClick("obb")} type="button">
+				        <span className="icon is-small">
+				          <i className="fa fa-heart"></i>
+				        </span>
+				      </button>  
 		        </form>
 	      </div>
-	      <TodoItems entries={this.state.items}
-          delete={this.deleteItem}/>
+	      <TodoItems entries={this.state.items} delete={this.deleteItem}/>
 	    </div>
 	  );
 	}
