@@ -37,13 +37,21 @@ class TodoItems extends Component {
   }
 
   completeTodo(key) {
+    this.props.complete(key);
+  }
+
+  deleteTodo(key) {
     this.props.delete(key);
   }
 
   createTasks(item) {
 	  return (
-        <TodoItem item={item} key={item.key} completeTodo={this.completeTodo.bind(this)} handleContextMenu={this.handleContextMenu}
-          showDelete={this.state.showDelete}/>
+        <TodoItem item={item} key={item.key} 
+          completeTodo={this.completeTodo.bind(this)} 
+          deleteTodo={this.deleteTodo.bind(this)} 
+          handleContextMenu={this.handleContextMenu}
+          showDelete={this.state.showDelete}
+        />
 	  );
 	}
  

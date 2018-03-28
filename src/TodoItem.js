@@ -49,6 +49,16 @@ class TodoItem extends Component {
 
   checkButtonHTML(item) {
     return (
+      <button className="button icon-button check" onClick={() => this.props.deleteTodo(this.props.item.key)}>
+        <span className="icon is-small">
+          <i className="fa fa-check"></i>
+        </span>
+      </button>
+    );
+  }
+
+  completeButtonHTML(item) {
+    return (
       <button className="button icon-button check" onClick={() => this.props.completeTodo(this.props.item.key)}>
         <span className="icon is-small">
           <i className="fa fa-check"></i>
@@ -82,7 +92,7 @@ class TodoItem extends Component {
         {this.dividerHTML(item)}
         <div className="task" onClick={this.toggleMoreIcons}>{item.text}</div>
         <div className="btn">
-          { !this.props.showDelete ? this.checkButtonHTML(item) : this.timesButtonHTML(item) }
+          { !this.props.showDelete ? this.completeButtonHTML(item) : this.timesButtonHTML(item) }
         </div>
       </div>
     );

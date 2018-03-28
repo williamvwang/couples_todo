@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import TodoItems from "./TodoItems";
+import CompletedItems from "./CompletedItems";
 //import SelectButton from "./SelectButton"
 import "./TodoList.css";
  
@@ -9,13 +10,17 @@ class TodoList extends Component {
 	 
 	  this.state = {
 	    items: [],
+	    completed_items: [],
+	    show_completed: false,
 	    ibbToggle: false,
 	    obbToggle: false
 	  };
 	 
 	  this.addItem = this.addItem.bind(this);
+	  this.completeItem = this.completeItem.bind(this);
 	  this.deleteItem = this.deleteItem.bind(this);
 	  this.handleClick = this.handleClick.bind(this);
+	  this.toggleCompleted = this.toggleCompleted.bind(this);
 	}
 
 	handleClick(character) {
@@ -26,7 +31,7 @@ class TodoList extends Component {
 		});
 	}
    
-  addItem(e) {
+ 	addItem(e) {
   	e.preventDefault();
 
   	if (this._inputElement.value !== "") {
@@ -54,6 +59,19 @@ class TodoList extends Component {
 	  }
 	}
 
+	completeItem(key) {
+		console.log('TodoList.completeItem called on item ' + key);
+		var completedItem = this.state.items.find(item => item.key === key);
+		var filteredItems = this.state.items.filter(item => item.key !== key);
+
+		this.setState(prevState => {
+      return { 
+        items: filteredItems,
+        completed_items: prevState.completed_items.concat(completedItem)
+      };
+    });
+	}
+
 	deleteItem(key) {
 	  var filteredItems = this.state.items.filter(function (item) {
 	    return (item.key !== key);
@@ -62,6 +80,14 @@ class TodoList extends Component {
 	  this.setState({
 	    items: filteredItems
 	  });
+	}
+
+	toggleCompleted() {
+		this.setState(prevState => {
+			return {
+				show_completed: !prevState.show_completed
+			}
+		});
 	}
 
   render() {
@@ -93,7 +119,20 @@ class TodoList extends Component {
 				      </button>  
 		        </form>
 	      </div>
-	      <TodoItems entries={this.state.items} delete={this.deleteItem}/>
+	      { !this.state.show_completed ? 
+	      	<TodoItems entries={this.state.items} complete={this.completeItem} delete={this.deleteItem}/> :
+	      	<CompletedItems entries={this.state.completed_items}/>
+	      }
+
+	    	{/* sketchy conditionals for displaying completed item switcher */}
+	      {this.state.completed_items.length > 0 && 
+		      	<span style={{cursor: 'pointer', textDecoration: 'underline'}} onClick={() => this.toggleCompleted()}>
+		      		{this.state.show_completed ?
+		      			'back to to-do' :
+		      			'show ' + this.state.completed_items.length + ' completed item' + (this.state.completed_items.length > 1 ? 's' : '')
+	      			}
+	      		</span>
+	      }
 	    </div>
 	  );
 	}
